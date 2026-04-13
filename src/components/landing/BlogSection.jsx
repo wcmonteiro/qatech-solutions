@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 
@@ -48,59 +49,61 @@ function PostCard({ post, index }) {
   });
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group flex flex-col rounded-2xl border border-slate-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] hover:border-slate-300 dark:hover:border-white/10 hover:shadow-md dark:hover:shadow-none transition-all duration-500 overflow-hidden"
-    >
-      <div className="relative h-48 overflow-hidden">
-        {post.cover_image ? (
-          <img
-            src={post.cover_image}
-            alt={post.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-blue-500/10 via-indigo-500/5 to-transparent flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center">
-              <Tag className="w-7 h-7 text-blue-500/30" />
+    <Link to={post.slug ? `/blog/${post.slug}` : "#"} className="block">
+      <motion.article
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="group flex flex-col rounded-2xl border border-slate-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] hover:border-blue-500/30 dark:hover:border-blue-500/20 hover:shadow-md dark:hover:shadow-none transition-all duration-500 overflow-hidden cursor-pointer"
+      >
+        <div className="relative h-48 overflow-hidden">
+          {post.cover_image ? (
+            <img
+              src={post.cover_image}
+              alt={post.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-blue-500/10 via-indigo-500/5 to-transparent flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center">
+                <Tag className="w-7 h-7 text-blue-500/30" />
+              </div>
             </div>
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#0A0F1C]/80 to-transparent" />
-      </div>
-
-      <div className="flex flex-col flex-1 p-7">
-        <div className="flex items-center gap-3 mb-4">
-          <span className={`text-[11px] font-semibold tracking-[0.12em] uppercase px-3 py-1 rounded-full border ${colorClass}`}>
-            {post.category}
-          </span>
-          {post.read_time && (
-            <span className="flex items-center gap-1 text-slate-400 dark:text-white/25 text-xs">
-              <Clock className="w-3 h-3" />
-              {post.read_time} min
-            </span>
           )}
+          <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#0A0F1C]/80 to-transparent" />
         </div>
 
-        <h3 className="text-lg font-semibold text-slate-900 dark:text-white leading-snug mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-100 transition-colors">
-          {post.title}
-        </h3>
+        <div className="flex flex-col flex-1 p-7">
+          <div className="flex items-center gap-3 mb-4">
+            <span className={`text-[11px] font-semibold tracking-[0.12em] uppercase px-3 py-1 rounded-full border ${colorClass}`}>
+              {post.category}
+            </span>
+            {post.read_time && (
+              <span className="flex items-center gap-1 text-slate-400 dark:text-white/25 text-xs">
+                <Clock className="w-3 h-3" />
+                {post.read_time} min
+              </span>
+            )}
+          </div>
 
-        <p className="text-slate-500 dark:text-white/40 text-sm font-light leading-relaxed flex-1">
-          {post.excerpt}
-        </p>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white leading-snug mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-100 transition-colors">
+            {post.title}
+          </h3>
 
-        <div className="mt-6 flex items-center justify-between">
-          <span className="text-slate-300 dark:text-white/20 text-xs">{formattedDate}</span>
-          <span className="flex items-center gap-1 text-blue-500 dark:text-blue-400 text-sm font-medium opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-            Ler mais <ArrowRight className="w-4 h-4" />
-          </span>
+          <p className="text-slate-500 dark:text-white/40 text-sm font-light leading-relaxed flex-1">
+            {post.excerpt}
+          </p>
+
+          <div className="mt-6 flex items-center justify-between">
+            <span className="text-slate-300 dark:text-white/20 text-xs">{formattedDate}</span>
+            <span className="flex items-center gap-1 text-blue-500 dark:text-blue-400 text-sm font-medium opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+              Ler mais <ArrowRight className="w-4 h-4" />
+            </span>
+          </div>
         </div>
-      </div>
-    </motion.article>
+      </motion.article>
+    </Link>
   );
 }
 
