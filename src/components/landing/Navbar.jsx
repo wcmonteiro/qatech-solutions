@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const navLinks = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Blog", href: "#blog" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Contato", href: "#contato" }
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Blog", href: "/#blog" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Contato", href: "/contato", isRoute: true },
 ];
 
 export default function Navbar() {
@@ -49,15 +50,25 @@ export default function Navbar() {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 font-light"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.isRoute ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="text-sm text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 font-light"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 font-light"
+              >
+                {link.label}
+              </a>
+            )
+          )}
           <a
             href="https://www.qatecnologia.com.br"
             target="_blank"
@@ -103,16 +114,27 @@ export default function Navbar() {
           className="md:hidden bg-white/95 dark:bg-[#0A0F1C]/95 backdrop-blur-xl border-t border-slate-200 dark:border-white/[0.04]"
         >
           <div className="px-6 py-6 space-y-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="block text-slate-500 dark:text-white/50 hover:text-slate-900 dark:hover:text-white transition-colors text-base"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.isRoute ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block text-slate-500 dark:text-white/50 hover:text-slate-900 dark:hover:text-white transition-colors text-base"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block text-slate-500 dark:text-white/50 hover:text-slate-900 dark:hover:text-white transition-colors text-base"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
             <a
               href="https://www.qatecnologia.com.br"
               target="_blank"
