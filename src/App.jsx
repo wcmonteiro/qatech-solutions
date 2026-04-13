@@ -9,6 +9,7 @@ import PageNotFound from './lib/PageNotFound';
 import BlogPostPage from './pages/BlogPostPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import ContactPage from './pages/ContactPage';
+import AdminPage from './pages/AdminPage';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -65,6 +66,7 @@ const AuthenticatedApp = () => {
       <Route path="/blog/:slug" element={<BlogPostPage />} />
       <Route path="/servicos/:slug" element={<ServiceDetailPage />} />
       <Route path="/contato" element={<ContactPage />} />
+      <Route path="/admin" element={<AdminPage />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
