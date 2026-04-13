@@ -4,12 +4,12 @@ export default function Footer() {
   return (
     <footer className="bg-[#050810] border-t border-white/[0.04] py-10 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="flex items-baseline">
-            <span className="text-2xl font-bold text-white tracking-tight">Q</span>
-            <span className="text-2xl font-bold text-red-500 tracking-tight">A</span>
-          </div>
-          <span className="text-white/20 text-xs tracking-[0.15em] uppercase">Tecnologia</span>
+        <div className="flex items-center">
+          <img
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698e855b9e9a93cb4b5c4c52/550ce8d56_QA-logo-branca-transparente.png"
+            alt="QA Tecnologia"
+            className="h-8 w-auto"
+          />
         </div>
 
         <p className="text-white/20 text-sm font-light">

@@ -31,14 +31,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2.5">
-          <div className="flex items-baseline">
-            <span className="text-3xl font-bold text-white tracking-tight">Q</span>
-            <span className="text-3xl font-bold text-red-500 tracking-tight">A</span>
-          </div>
-          <span className="text-white/30 text-[10px] tracking-[0.2em] uppercase hidden sm:inline">
-            Tecnologia
-          </span>
+        <a href="#" className="flex items-center">
+          <img
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698e855b9e9a93cb4b5c4c52/550ce8d56_QA-logo-branca-transparente.png"
+            alt="QA Tecnologia"
+            className="h-10 w-auto"
+          />
         </a>
 
         {/* Desktop links */}

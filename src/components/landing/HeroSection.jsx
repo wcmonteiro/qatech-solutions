@@ -41,10 +41,10 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight mb-8"
           >
-            Governança,{" "}
+            Estratégia,{" "}
             <span className="relative">
               <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-indigo-400 bg-clip-text text-transparent">
-                Estratégia
+                Governança
               </span>
             </span>
             <br />
