@@ -1,0 +1,56 @@
+{
+  "name": "BlogPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "T\u00edtulo"
+    },
+    "slug": {
+      "type": "string",
+      "title": "Slug (URL)"
+    },
+    "excerpt": {
+      "type": "string",
+      "title": "Resumo"
+    },
+    "content": {
+      "type": "string",
+      "title": "Conte\u00fado"
+    },
+    "category": {
+      "type": "string",
+      "title": "Categoria",
+      "enum": [
+        "Governan\u00e7a Digital",
+        "Intelig\u00eancia Artificial",
+        "Estrat\u00e9gia",
+        "Inova\u00e7\u00e3o",
+        "Digital Business"
+      ]
+    },
+    "cover_image": {
+      "type": "string",
+      "title": "Imagem de Capa (URL)"
+    },
+    "author": {
+      "type": "string",
+      "title": "Autor"
+    },
+    "published": {
+      "type": "boolean",
+      "title": "Publicado",
+      "default": false
+    },
+    "read_time": {
+      "type": "number",
+      "title": "Tempo de Leitura (min)"
+    }
+  },
+  "required": [
+    "title",
+    "excerpt",
+    "category",
+    "published"
+  ]
+}
