@@ -83,6 +83,50 @@ export default function BlogPostPage() {
 
   const shareUrl = window.location.href;
 
+  // Inject dynamic Open Graph + Twitter Card meta tags
+  useEffect(() => {
+    if (!post) return;
+
+    const setMeta = (attrs) => {
+      const selector = attrs.property
+        ? `meta[property="${attrs.property}"]`
+        : `meta[name="${attrs.name}"]`;
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement("meta");
+        if (attrs.property) el.setAttribute("property", attrs.property);
+        if (attrs.name) el.setAttribute("name", attrs.name);
+        el.setAttribute("data-dynamic", "blog");
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", attrs.content);
+    };
+
+    const prevTitle = document.title;
+    document.title = `${post.title} | QA Tecnologia`;
+
+    const metas = [
+      { property: "og:type", content: "article" },
+      { property: "og:title", content: post.title },
+      { property: "og:description", content: post.excerpt || "" },
+      { property: "og:url", content: shareUrl },
+      { property: "og:site_name", content: "QA Tecnologia" },
+      ...(post.cover_image ? [{ property: "og:image", content: post.cover_image }] : []),
+      { name: "twitter:card", content: post.cover_image ? "summary_large_image" : "summary" },
+      { name: "twitter:title", content: post.title },
+      { name: "twitter:description", content: post.excerpt || "" },
+      ...(post.cover_image ? [{ name: "twitter:image", content: post.cover_image }] : []),
+      { name: "description", content: post.excerpt || "" },
+    ];
+
+    metas.forEach(setMeta);
+
+    return () => {
+      document.title = prevTitle;
+      document.querySelectorAll("meta[data-dynamic='blog']").forEach((el) => el.remove());
+    };
+  }, [post, shareUrl]);
+
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareUrl);
     setCopied(true);
