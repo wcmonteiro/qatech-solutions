@@ -1,0 +1,27 @@
+{
+  "name": "NewsletterSubscriber",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "title": "E-mail"
+    },
+    "name": {
+      "type": "string",
+      "title": "Nome"
+    },
+    "source": {
+      "type": "string",
+      "title": "Origem",
+      "default": "landing_page"
+    },
+    "active": {
+      "type": "boolean",
+      "title": "Ativo",
+      "default": true
+    }
+  },
+  "required": [
+    "email"
+  ]
+}
