@@ -7,6 +7,7 @@ import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import BlogPostPage from './pages/BlogPostPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -61,6 +62,7 @@ const AuthenticatedApp = () => {
         />
       ))}
       <Route path="/blog/:slug" element={<BlogPostPage />} />
+      <Route path="/servicos/:slug" element={<ServiceDetailPage />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Shield, Brain, Lightbulb, BarChart3, FileCheck, Search } from "lucide-react";
 
@@ -45,6 +46,15 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const slugMap = {
+    "Governança Digital": "governanca-digital",
+    "Consultoria Estratégica": "consultoria-estrategica",
+    "Inteligência Artificial": "inteligencia-artificial",
+    "Digital Business Assurance": "digital-business-assurance",
+    "Aquisição de Software": "aquisicao-de-software",
+    "Auditoria de Contratos de TI": "auditoria-de-contratos-de-ti",
+  };
+
   return (
     <section id="servicos" className="relative py-28 md:py-36 bg-slate-50 dark:bg-[#0A0F1C]">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/5 rounded-full blur-[150px]" />
@@ -78,35 +88,43 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`group relative rounded-2xl p-8 transition-all duration-500 cursor-default ${
-                  service.highlight
-                    ? "bg-gradient-to-b from-blue-500/10 to-transparent border border-blue-500/20 hover:border-blue-500/40 hover:shadow-[0_0_60px_rgba(59,130,246,0.08)]"
-                    : "bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] hover:border-slate-300 dark:hover:border-white/10 hover:bg-slate-50 dark:hover:bg-white/[0.04]"
-                }`}
               >
-                {service.tag && (
-                  <span className="absolute top-6 right-6 text-[10px] tracking-[0.15em] uppercase text-blue-500 dark:text-blue-400 font-semibold bg-blue-500/10 px-3 py-1 rounded-full">
-                    {service.tag}
+                <Link
+                  to={`/servicos/${slugMap[service.title]}`}
+                  className={`group relative rounded-2xl p-8 transition-all duration-500 flex flex-col h-full ${
+                    service.highlight
+                      ? "bg-gradient-to-b from-blue-500/10 to-transparent border border-blue-500/20 hover:border-blue-500/40 hover:shadow-[0_0_60px_rgba(59,130,246,0.08)]"
+                      : "bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] hover:border-slate-300 dark:hover:border-white/10 hover:bg-slate-50 dark:hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {service.tag && (
+                    <span className="absolute top-6 right-6 text-[10px] tracking-[0.15em] uppercase text-blue-500 dark:text-blue-400 font-semibold bg-blue-500/10 px-3 py-1 rounded-full">
+                      {service.tag}
+                    </span>
+                  )}
+
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 ${
+                    service.highlight
+                      ? "bg-blue-500/15 group-hover:bg-blue-500/25"
+                      : "bg-slate-100 dark:bg-white/[0.05] group-hover:bg-slate-200 dark:group-hover:bg-white/[0.08]"
+                  }`}>
+                    <Icon className={`w-6 h-6 ${
+                      service.highlight ? "text-blue-500 dark:text-blue-400" : "text-slate-500 dark:text-white/50"
+                    }`} />
+                  </div>
+
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3 tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-slate-500 dark:text-white/40 leading-relaxed text-[15px] font-light flex-1">
+                    {service.description}
+                  </p>
+
+                  <span className="mt-6 text-sm text-blue-500 dark:text-blue-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Saiba mais →
                   </span>
-                )}
-
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 ${
-                  service.highlight
-                    ? "bg-blue-500/15 group-hover:bg-blue-500/25"
-                    : "bg-slate-100 dark:bg-white/[0.05] group-hover:bg-slate-200 dark:group-hover:bg-white/[0.08]"
-                }`}>
-                  <Icon className={`w-6 h-6 ${
-                    service.highlight ? "text-blue-500 dark:text-blue-400" : "text-slate-500 dark:text-white/50"
-                  }`} />
-                </div>
-
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3 tracking-tight">
-                  {service.title}
-                </h3>
-
-                <p className="text-slate-500 dark:text-white/40 leading-relaxed text-[15px] font-light">
-                  {service.description}
-                </p>
+                </Link>
               </motion.div>
             );
           })}
