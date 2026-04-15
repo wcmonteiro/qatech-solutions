@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { ArrowRight, Mail, MapPin, Linkedin, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { base44 } from "@/api/base44Client";
-import LeadCaptureForm from "./LeadCaptureForm";
+
 
 const services = [
   "Consultoria Estratégica",
@@ -90,12 +90,6 @@ export default function CTASection() {
               </a>
             </div>
 
-            {/* Lead capture widget */}
-            <div className="mt-10 rounded-2xl border border-blue-500/20 bg-blue-500/[0.04] p-6">
-              <p className="text-sm font-semibold text-slate-800 dark:text-white/80 mb-1">Contato rápido</p>
-              <p className="text-xs text-slate-500 dark:text-white/40 mb-5">Deixe seus dados e entramos em contato.</p>
-              <LeadCaptureForm source="cta_section" />
-            </div>
           </motion.div>
 
           <motion.div
