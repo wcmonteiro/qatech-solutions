@@ -69,14 +69,7 @@ export default function Navbar() {
               </a>
             )
           )}
-          <a
-            href="https://www.qatecnologia.com.br"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-300 font-medium ml-2"
-          >
-            Visitar Site →
-          </a>
+
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -135,14 +128,7 @@ export default function Navbar() {
                 </a>
               )
             )}
-            <a
-              href="https://www.qatecnologia.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-blue-500 dark:text-blue-400 font-medium text-base pt-2"
-            >
-              Visitar Site →
-            </a>
+
           </div>
         </motion.div>
       )}
