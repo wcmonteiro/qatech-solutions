@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 
 const navLinks = [
   { label: "Serviços", href: "/#servicos" },
+  { label: "Cases", href: "/cases", isRoute: true },
   { label: "Blog", href: "/#blog" },
   { label: "Sobre", href: "/#sobre" },
   { label: "Contato", href: "/contato", isRoute: true },

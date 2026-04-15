@@ -1,0 +1,57 @@
+{
+  "name": "CaseStudy",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "T\u00edtulo"
+    },
+    "client": {
+      "type": "string",
+      "title": "Cliente"
+    },
+    "category": {
+      "type": "string",
+      "title": "Categoria",
+      "enum": [
+        "Governan\u00e7a Digital",
+        "Intelig\u00eancia Artificial",
+        "Consultoria Estrat\u00e9gica",
+        "Digital Business Assurance",
+        "Aquisi\u00e7\u00e3o de Software",
+        "Auditoria de Contratos de TI"
+      ]
+    },
+    "problem": {
+      "type": "string",
+      "title": "Problema"
+    },
+    "solution": {
+      "type": "string",
+      "title": "Solu\u00e7\u00e3o Aplicada"
+    },
+    "results": {
+      "type": "string",
+      "title": "Resultados"
+    },
+    "cover_image": {
+      "type": "string",
+      "title": "Imagem de Capa (URL)"
+    },
+    "published": {
+      "type": "boolean",
+      "title": "Publicado",
+      "default": false
+    },
+    "order": {
+      "type": "number",
+      "title": "Ordem de exibi\u00e7\u00e3o"
+    }
+  },
+  "required": [
+    "title",
+    "problem",
+    "solution",
+    "results"
+  ]
+}

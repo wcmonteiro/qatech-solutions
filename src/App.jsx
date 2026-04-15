@@ -10,6 +10,7 @@ import BlogPostPage from './pages/BlogPostPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import ContactPage from './pages/ContactPage';
 import AdminPage from './pages/AdminPage';
+import CasesPage from './pages/CasesPage';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -67,6 +68,7 @@ const AuthenticatedApp = () => {
       <Route path="/servicos/:slug" element={<ServiceDetailPage />} />
       <Route path="/contato" element={<ContactPage />} />
       <Route path="/admin" element={<AdminPage />} />
+      <Route path="/cases" element={<CasesPage />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
