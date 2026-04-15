@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { trackPageView } from '@/lib/ga';
 import { useAuth } from './AuthContext';
 import { base44 } from '@/api/base44Client';
 import { pagesConfig } from '@/pages.config';
@@ -36,6 +37,9 @@ export default function NavigationTracker() {
                 // Silently fail - logging shouldn't break the app
             });
         }
+
+        // GA4 page view tracking
+        trackPageView(location.pathname, pageName || document.title);
     }, [location, isAuthenticated, Pages, mainPageKey]);
 
     return null;

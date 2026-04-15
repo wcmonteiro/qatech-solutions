@@ -6,6 +6,12 @@ import { X, MessageCircle } from "lucide-react";
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "5531999999999";
 const WHATSAPP_MESSAGE = import.meta.env.VITE_WHATSAPP_MESSAGE || "Olá! Gostaria de mais informações sobre os serviços da QA Tecnologia.";
 
+const trackEvent = (name, params = {}) => {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", name, params);
+  }
+};
+
 export default function WhatsAppButton() {
   const [tooltip, setTooltip] = useState(false);
 
@@ -34,6 +40,7 @@ export default function WhatsAppButton() {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackEvent("whatsapp_click", { method: "floating_button" })}
         onMouseEnter={() => setTooltip(true)}
         onMouseLeave={() => setTooltip(false)}
         initial={{ scale: 0, opacity: 0 }}
