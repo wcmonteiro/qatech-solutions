@@ -1,0 +1,36 @@
+{
+  "name": "Lead",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Nome"
+    },
+    "email": {
+      "type": "string",
+      "title": "E-mail"
+    },
+    "interest": {
+      "type": "string",
+      "title": "Interesse",
+      "enum": [
+        "Consultoria Estrat\u00e9gica",
+        "Governan\u00e7a Digital",
+        "Intelig\u00eancia Artificial",
+        "Digital Business Assurance",
+        "Aquisi\u00e7\u00e3o de Software",
+        "Auditoria de Contratos de TI",
+        "Outro"
+      ]
+    },
+    "source": {
+      "type": "string",
+      "title": "Origem",
+      "default": "landing_page"
+    }
+  },
+  "required": [
+    "name",
+    "email"
+  ]
+}
