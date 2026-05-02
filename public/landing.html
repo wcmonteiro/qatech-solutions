@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA Tecnologia — Estratégia, Governança & Inteligência Artificial</title>
+  <meta name="description" content="Transformamos organizações por meio da inovação tecnológica, construindo diferenciais competitivos com foco em resultados sustentáveis e excelência operacional." />
+  <meta property="og:title" content="QA Tecnologia" />
+  <meta property="og:description" content="Estratégia, Governança & Inteligência Artificial" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0F1C;
+      --bg2: #070B14;
+      --white: #ffffff;
+      --white40: rgba(255,255,255,0.4);
+      --white50: rgba(255,255,255,0.5);
+      --white60: rgba(255,255,255,0.6);
+      --blue: #3b82f6;
+      --blue-light: #60a5fa;
+      --indigo: #6366f1;
+      --border: rgba(255,255,255,0.06);
+      --border-light: rgba(255,255,255,0.08);
+      --card-bg: rgba(255,255,255,0.02);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(10,15,28,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--white40); text-decoration: none; font-size: 0.875rem;
+      font-weight: 300; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-hamburger { display: none; cursor: pointer; color: var(--white60); }
+    .nav-hamburger svg { width: 24px; height: 24px; }
+    .mobile-menu {
+      display: none; background: rgba(10,15,28,0.97);
+      border-top: 1px solid var(--border); padding: 1.5rem 2rem;
+    }
+    .mobile-menu a {
+      display: block; padding: 0.75rem 0; color: var(--white50);
+      text-decoration: none; font-size: 1rem; font-weight: 300;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu.open { display: block; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* HERO */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; overflow: hidden;
+      background: var(--bg);
+    }
+    .hero-blob1 {
+      position: absolute; top: 25%; left: -8rem;
+      width: 24rem; height: 24rem;
+      background: rgba(59,130,246,0.2); border-radius: 50%;
+      filter: blur(120px); animation: pulse 4s ease-in-out infinite;
+    }
+    .hero-blob2 {
+      position: absolute; bottom: 25%; right: 0;
+      width: 20rem; height: 20rem;
+      background: rgba(99,102,241,0.15); border-radius: 50%;
+      filter: blur(100px); animation: pulse 4s ease-in-out infinite 1s;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image: linear-gradient(rgba(0,0,0,.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.1) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      max-width: 1280px; margin: 0 auto;
+      padding: 5rem 2rem; width: 100%;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem; border-radius: 999px;
+      border: 1px solid rgba(59,130,246,0.2);
+      background: rgba(59,130,246,0.05); margin-bottom: 2rem;
+    }
+    .hero-tag span { font-size: 0.875rem; color: #93c5fd; font-weight: 500; }
+    .hero-tag svg { width: 16px; height: 16px; color: var(--blue); }
+    h1.hero-title {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800; line-height: 0.95;
+      letter-spacing: -0.02em; margin-bottom: 2rem;
+      color: var(--white);
+    }
+    .grad-blue { background: linear-gradient(to right, #3b82f6, #60a5fa, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .grad-indigo { background: linear-gradient(to right, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-muted { color: var(--white40); }
+    .hero-subtitle {
+      font-size: 1.125rem; color: var(--white50);
+      max-width: 36rem; line-height: 1.75; margin-bottom: 3rem; font-weight: 300;
+    }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--blue); color: white; padding: 0.875rem 2rem;
+      border-radius: 0.75rem; font-size: 1rem; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .btn-primary:hover { background: #2563eb; box-shadow: 0 0 40px rgba(59,130,246,0.3); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--white60); padding: 0.875rem 2rem;
+      border-radius: 0.75rem; font-size: 1rem; font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.1); text-decoration: none; cursor: pointer;
+      transition: color 0.3s, border-color 0.3s, background 0.3s;
+    }
+    .btn-outline:hover { color: var(--white); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
+    .btn-arrow { transition: transform 0.3s; }
+    .btn-primary:hover .btn-arrow { transform: translateX(4px); }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem; margin-top: 5rem;
+    }
+    @media (min-width: 768px) { .hero-stats { grid-template-columns: repeat(4, 1fr); } }
+    .stat-number { font-size: 2.25rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+    .stat-label { font-size: 0.875rem; color: var(--white40); letter-spacing: 0.05em; }
+    .hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 8rem; background: linear-gradient(to top, var(--bg), transparent); }
+
+    /* SERVICES */
+    #servicos {
+      position: relative; padding: 7rem 2rem;
+      background: var(--bg2);
+    }
+    .section-top { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent); }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-label { font-size: 0.8rem; color: var(--blue-light); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--white); margin-top: 1rem; margin-bottom: 1rem; letter-spacing: -0.02em; line-height: 1.1; }
+    .section-sub { color: var(--white40); font-weight: 300; max-width: 36rem; line-height: 1.75; margin-bottom: 4rem; }
+    .services-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+    .service-card {
+      display: flex; flex-direction: column; gap: 1rem;
+      padding: 1.75rem; border-radius: 1rem;
+      border: 1px solid var(--border-light);
+      background: var(--card-bg);
+      text-decoration: none; color: inherit;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .service-card:hover { border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.04); }
+    .service-card.highlight { border-color: rgba(59,130,246,0.25); background: rgba(59,130,246,0.05); }
+    .service-icon {
+      width: 3rem; height: 3rem; border-radius: 0.75rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .service-icon svg { width: 1.5rem; height: 1.5rem; }
+    .service-icon.blue { background: rgba(59,130,246,0.15); color: var(--blue-light); }
+    .service-icon.gray { background: rgba(255,255,255,0.05); color: var(--white50); }
+    .service-card-title { font-size: 1.125rem; font-weight: 600; color: var(--white); }
+    .service-card-desc { font-size: 0.875rem; color: var(--white40); font-weight: 300; line-height: 1.65; flex: 1; }
+    .service-link { font-size: 0.8rem; color: var(--blue-light); display: flex; align-items: center; gap: 0.25rem; margin-top: 0.5rem; }
+    .service-link svg { width: 14px; height: 14px; }
+
+    /* ABOUT */
+    #sobre {
+      position: relative; padding: 7rem 2rem;
+      background: var(--bg2);
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+    @media (min-width: 1024px) { .about-grid { grid-template-columns: repeat(2, 1fr); gap: 6rem; } }
+    .checklist { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .check-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .check-item svg { width: 20px; height: 20px; color: var(--blue-light); flex-shrink: 0; margin-top: 2px; }
+    .check-item span { font-size: 0.9375rem; color: var(--white50); font-weight: 300; }
+    .pillars { display: flex; flex-direction: column; gap: 1.25rem; }
+    .pillar {
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      padding: 1.5rem; border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .pillar:hover { border-color: rgba(59,130,246,0.2); background: rgba(59,130,246,0.03); }
+    .pillar-icon {
+      width: 3rem; height: 3rem; border-radius: 0.75rem;
+      background: rgba(59,130,246,0.1);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      color: var(--blue-light);
+    }
+    .pillar-icon svg { width: 1.5rem; height: 1.5rem; }
+    .pillar-title { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
+    .pillar-text { font-size: 0.875rem; color: var(--white40); font-weight: 300; }
+
+    /* TESTIMONIALS */
+    #depoimentos {
+      padding: 7rem 2rem;
+      background: var(--bg);
+    }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3rem; }
+    @media (min-width: 640px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+    .testimonial-card {
+      padding: 2rem; border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+    }
+    .testimonial-text { font-size: 0.9375rem; color: var(--white50); font-weight: 300; line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .author-avatar {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(99,102,241,0.2));
+      border: 1px solid rgba(59,130,246,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: #93c5fd;
+    }
+    .author-name { font-size: 0.875rem; font-weight: 600; color: var(--white); }
+    .author-role { font-size: 0.75rem; color: var(--white40); font-weight: 300; }
+
+    /* CTA / CONTACT */
+    #contato {
+      position: relative; padding: 7rem 2rem;
+      background: var(--bg2); overflow: hidden;
+    }
+    .contact-blob {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50rem; height: 50rem;
+      background: rgba(59,130,246,0.04); border-radius: 50%;
+      filter: blur(150px); pointer-events: none;
+    }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: start; }
+    @media (min-width: 1024px) { .contact-grid { grid-template-columns: repeat(2, 1fr); gap: 4rem; } }
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; }
+    .contact-info-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: var(--white40); font-weight: 300; }
+    .contact-info-item svg { width: 16px; height: 16px; color: rgba(59,130,246,0.5); flex-shrink: 0; }
+    .contact-form {
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      border-radius: 1.25rem; padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) { .form-row { grid-template-columns: repeat(2, 1fr); } }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .form-group label { font-size: 0.875rem; color: var(--white50); font-weight: 300; }
+    .form-group label span { color: var(--blue-light); }
+    .form-control {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-light); border-radius: 0.75rem;
+      padding: 0.75rem 1rem; color: var(--white); font-size: 0.875rem;
+      font-family: inherit; outline: none; transition: border-color 0.3s;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-control::placeholder { color: rgba(255,255,255,0.2); }
+    .form-control:focus { border-color: rgba(59,130,246,0.5); }
+    .form-control option { background: #0A0F1C; }
+    textarea.form-control { resize: none; }
+    .btn-submit {
+      width: 100%; background: var(--blue); color: white;
+      padding: 1rem; border-radius: 0.75rem; font-size: 1rem;
+      font-weight: 500; border: none; cursor: pointer;
+      font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      transition: background 0.3s, box-shadow 0.3s; margin-top: 0.5rem;
+    }
+    .btn-submit:hover { background: #2563eb; box-shadow: 0 0 40px rgba(59,130,246,0.25); }
+    .btn-submit svg { width: 20px; height: 20px; }
+    .success-box {
+      border: 1px solid rgba(59,130,246,0.2); border-radius: 1.25rem;
+      background: rgba(59,130,246,0.05); padding: 3rem 2rem;
+      text-align: center; display: none;
+    }
+    .success-box.show { display: block; }
+    .success-icon { width: 3.5rem; height: 3.5rem; color: var(--blue-light); margin: 0 auto 1.25rem; }
+    .success-title { font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+    .success-text { color: var(--white40); font-weight: 300; }
+    .success-again { background: none; border: none; color: var(--blue-light); cursor: pointer; font-size: 0.875rem; margin-top: 1.5rem; font-family: inherit; }
+
+    /* FOOTER */
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 2rem; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+    @media (min-width: 768px) { .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .footer-logo img { height: 32px; width: auto; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--white40); text-decoration: none; font-weight: 300; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 0.75rem; color: var(--white40); font-weight: 300; }
+
+    /* WHATSAPP */
+    .whatsapp-btn {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100;
+      width: 3.5rem; height: 3.5rem; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .whatsapp-btn svg { width: 1.75rem; height: 1.75rem; }
+
+    /* ANIMATIONS */
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.6s ease both; }
+    .fade-up-delay-1 { animation-delay: 0.1s; }
+    .fade-up-delay-2 { animation-delay: 0.2s; }
+    .fade-up-delay-3 { animation-delay: 0.3s; }
+    .fade-up-delay-4 { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698e855b9e9a93cb4b5c4c52/550ce8d56_QA-logo-branca-transparente.png" alt="QA Tecnologia" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+    <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+    <a href="#depoimentos" onclick="toggleMenu()">Depoimentos</a>
+    <a href="#contato" onclick="toggleMenu()">Contato</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag fade-up">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z"/></svg>
+      <span>Inovar com resultados</span>
+    </div>
+    <h1 class="hero-title fade-up fade-up-delay-1">
+      Estratégia,
+      <span class="grad-blue"> Governança</span><br/>
+      <span class="hero-muted">&amp;</span> Inteligência
+      <span class="grad-indigo"> Artificial</span>
+    </h1>
+    <p class="hero-subtitle fade-up fade-up-delay-2">
+      Transformamos organizações por meio da inovação tecnológica, construindo diferenciais competitivos com foco em resultados sustentáveis e excelência operacional.
+    </p>
+    <div class="hero-buttons fade-up fade-up-delay-3">
+      <a href="#servicos" class="btn-primary">
+        Nossos Serviços
+        <svg class="btn-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:20px;height:20px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="#contato" class="btn-outline">Fale Conosco</a>
+    </div>
+    <div class="hero-stats fade-up fade-up-delay-4">
+      <div><div class="stat-number">15+</div><div class="stat-label">Serviços Prestados</div></div>
+      <div><div class="stat-number">10+</div><div class="stat-label">Clientes Ativos</div></div>
+      <div><div class="stat-number">2.4K</div><div class="stat-label">Horas de Treinamento</div></div>
+      <div><div class="stat-number">100%</div><div class="stat-label">Foco em Resultados</div></div>
+    </div>
+  </div>
+  <div class="hero-fade"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicos">
+  <div class="section-top"></div>
+  <div class="section-inner">
+    <div class="section-label">O que fazemos</div>
+    <h2 class="section-title">Nossos <span class="grad-blue">Serviços</span></h2>
+    <p class="section-sub">Soluções especializadas para transformar sua organização por meio da tecnologia e da inovação estratégica.</p>
+    <div class="services-grid">
+
+      <a href="#contato" class="service-card highlight">
+        <div class="service-icon blue">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div class="service-card-title">Governança Digital</div>
+        <div class="service-card-desc">Estruturamos os pilares estratégicos que geram conhecimento e inovação, conectando processos, pessoas e tecnologia.</div>
+        <div class="service-link">Saiba mais <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#contato" class="service-card highlight">
+        <div class="service-icon blue">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <div class="service-card-title">Consultoria Estratégica</div>
+        <div class="service-card-desc">Elaboramos estratégias para tornar a organização mais ágil às mudanças de mercado através da tecnologia da informação.</div>
+        <div class="service-link">Saiba mais <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#contato" class="service-card highlight">
+        <div class="service-icon blue">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-1m-6 0v4m-4-4v4"/></svg>
+        </div>
+        <div class="service-card-title">Inteligência Artificial</div>
+        <div class="service-card-desc">Impulsionamos a Transformação Digital com IA, Cloud Computing, IoT, Big Data &amp; Analytics, identificando oportunidades de negócio.</div>
+        <div class="service-link">Saiba mais <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#contato" class="service-card">
+        <div class="service-icon gray">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <div class="service-card-title">Digital Business Assurance</div>
+        <div class="service-card-desc">Garantimos uma melhor experiência de qualidade para o cliente com serviços digitais, trazendo maior economia e agilidade.</div>
+        <div class="service-link">Saiba mais <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#contato" class="service-card">
+        <div class="service-icon gray">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <div class="service-card-title">Aquisição de Software</div>
+        <div class="service-card-desc">Atuamos de forma consultiva na melhoria dos processos de aquisição de software e serviços correlatos visando melhores resultados.</div>
+        <div class="service-link">Saiba mais <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a href="#contato" class="service-card">
+        <div class="service-icon gray">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <div class="service-card-title">Auditoria de Contratos de TI</div>
+        <div class="service-card-desc">Análise independente dos contratos de tecnologia, alinhando as melhores práticas de mercado e atendendo exigências estratégicas.</div>
+        <div class="service-link">Saiba mais <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="sobre">
+  <div class="section-top"></div>
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">Em Destaque</div>
+        <h2 class="section-title">Digital Business <span class="grad-blue">Assurance</span></h2>
+        <p class="section-sub" style="margin-bottom:0">Para ter um crescimento sustentável e rentável do negócio, é preciso gerir os riscos e objetivar o equilíbrio entre os aspectos administrativos, operacionais e tecnológicos.</p>
+        <div class="checklist">
+          <div class="check-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Gestão de riscos operacionais e tecnológicos</span></div>
+          <div class="check-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Indicadores de qualidade dos processos-chave</span></div>
+          <div class="check-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Equilíbrio entre aspectos administrativos e tecnológicos</span></div>
+          <div class="check-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Garantia dos melhores resultados digitais</span></div>
+        </div>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"/></svg></div>
+          <div><div class="pillar-title">Estratégia Orientada</div><div class="pillar-text">Alinhamento entre tecnologia e objetivos de negócio</div></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+          <div><div class="pillar-title">Crescimento Sustentável</div><div class="pillar-text">Modelos escaláveis com indicadores de qualidade</div></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <div><div class="pillar-title">Inovação Contínua</div><div class="pillar-text">Transformação digital com as melhores tecnologias</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="depoimentos">
+  <div class="section-inner">
+    <div class="section-label">Depoimentos</div>
+    <h2 class="section-title">O que nossos <span class="grad-blue">clientes dizem</span></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"A QA Tecnologia foi fundamental para estruturarmos nossa governança de TI. A abordagem estratégica e o comprometimento da equipe fizeram toda a diferença nos resultados."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CM</div>
+          <div><div class="author-name">Carlos Mendes</div><div class="author-role">Diretor de TI · Setor Público</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"A consultoria estratégica nos ajudou a redesenhar nosso roadmap de transformação digital com clareza e objetividade. Altamente recomendado."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AM</div>
+          <div><div class="author-name">Ana Martins</div><div class="author-role">CEO · Empresa de Tecnologia</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"A auditoria de contratos de TI revelou oportunidades de economia significativas que não havíamos identificado internamente. Excelente trabalho."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RS</div>
+          <div><div class="author-name">Roberto Silva</div><div class="author-role">CFO · Grupo Empresarial</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contato">
+  <div class="contact-blob"></div>
+  <div class="section-top"></div>
+  <div class="section-inner" style="position:relative;z-index:10">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Fale Conosco</div>
+        <h2 class="section-title">Solicite um <span class="grad-blue">orçamento</span></h2>
+        <p class="section-sub" style="margin-bottom:0">Preencha o formulário e nossa equipe entrará em contato em até 24 horas úteis.</p>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Belo Horizonte, MG
+          </div>
+          <div class="contact-info-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            contato@qatecnologia.com.br
+          </div>
+          <div class="contact-info-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            <a href="https://www.linkedin.com/company/qatecnologia" target="_blank" style="color:inherit;text-decoration:none">/company/qatecnologia</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome <span>*</span></label>
+              <input type="text" id="name" class="form-control" placeholder="Seu nome" />
+            </div>
+            <div class="form-group">
+              <label>E-mail <span>*</span></label>
+              <input type="email" id="email" class="form-control" placeholder="seu@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" id="company" class="form-control" placeholder="Nome da sua empresa" />
+          </div>
+          <div class="form-group">
+            <label>Serviço de interesse <span>*</span></label>
+            <select id="service" class="form-control">
+              <option value="">Selecione...</option>
+              <option>Consultoria Estratégica</option>
+              <option>Governança Digital</option>
+              <option>Inteligência Artificial</option>
+              <option>Digital Business Assurance</option>
+              <option>Aquisição de Software</option>
+              <option>Auditoria de Contratos de TI</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensagem <span>*</span></label>
+            <textarea id="message" class="form-control" rows="5" placeholder="Descreva brevemente sua necessidade..."></textarea>
+          </div>
+          <button class="btn-submit" onclick="submitForm()">
+            Enviar Solicitação
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </button>
+        </div>
+        <div class="success-box" id="successBox">
+          <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <div class="success-title">Mensagem enviada!</div>
+          <div class="success-text">Obrigado pelo contato. Nossa equipe retornará em breve.</div>
+          <button class="success-again" onclick="resetForm()">Enviar nova mensagem</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698e855b9e9a93cb4b5c4c52/550ce8d56_QA-logo-branca-transparente.png" alt="QA Tecnologia" />
+    </div>
+    <div class="footer-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+      <a href="https://www.linkedin.com/company/qatecnologia" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-copy">© 2025 QA Tecnologia. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/5531999999999" target="_blank" class="whatsapp-btn" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(10,15,28,0.95)';
+    } else {
+      nav.style.background = 'rgba(10,15,28,0.8)';
+    }
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .pillar, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+
+  // Form submission (opens mailto as fallback since this is static HTML)
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const service = document.getElementById('service').value;
+    const company = document.getElementById('company').value.trim();
+
+    if (!name || !email || !message || !service) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      alert('Por favor, insira um e-mail válido.');
+      return;
+    }
+
+    const subject = encodeURIComponent(`Solicitação de Orçamento - ${service}`);
+    const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\nEmpresa: ${company}\nServiço: ${service}\n\nMensagem:\n${message}`);
+    window.location.href = `mailto:contato@qatecnologia.com.br?subject=${subject}&body=${body}`;
+
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successBox').classList.add('show');
+  }
+
+  function resetForm() {
+    document.getElementById('contactForm').style.display = 'block';
+    document.getElementById('successBox').classList.remove('show');
+    ['name','email','company','service','message'].forEach(id => document.getElementById(id).value = '');
+  }
+</script>
+</body>
+</html>
