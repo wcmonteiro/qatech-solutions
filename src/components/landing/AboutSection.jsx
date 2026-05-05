@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { TrendingUp, Target, Zap, CheckCircle } from "lucide-react";
+import { fadeLeft, fadeRight, fadeUp, staggerContainer, viewportConfig } from "@/lib/animations";
 
 const pillars = [
   { icon: Target, title: "Estratégia Orientada", text: "Alinhamento entre tecnologia e objetivos de negócio" },
@@ -25,10 +26,10 @@ export default function AboutSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
           >
             <span className="text-sm text-blue-500 dark:text-blue-400 tracking-[0.2em] uppercase font-medium">
               Em Destaque
@@ -47,39 +48,39 @@ export default function AboutSection() {
               operacionais e tecnológicos.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <motion.div
+              className="mt-8 space-y-4"
+              variants={staggerContainer(0.1, 0.2)}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewportConfig}
+            >
               {checkpoints.map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  variants={fadeLeft}
                   className="flex items-start gap-3"
                 >
                   <CheckCircle className="w-5 h-5 text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0" />
                   <span className="text-slate-500 dark:text-white/50 text-[15px]">{item}</span>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-5"
+            variants={staggerContainer(0.12, 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
           >
             {pillars.map((pillar, i) => {
               const Icon = pillar.icon;
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                  variants={fadeRight}
                   className="group flex items-start gap-5 p-6 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] hover:border-blue-500/20 hover:bg-blue-500/[0.03] transition-all duration-500"
                 >
                   <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-colors duration-300">

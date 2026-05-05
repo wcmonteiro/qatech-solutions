@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Shield, Brain, Lightbulb, BarChart3, FileCheck, Search } from "lucide-react";
+import { fadeUp, staggerContainer, scaleIn, viewportConfig } from "@/lib/animations";
 
 const services = [
   {
@@ -61,10 +62,10 @@ export default function ServicesSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
           className="text-center mb-20"
         >
           <span className="text-sm text-blue-500 dark:text-blue-400 tracking-[0.2em] uppercase font-medium">
@@ -78,16 +79,19 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+          variants={staggerContainer(0.08, 0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
+        >
           {services.map((service, i) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                variants={scaleIn}
               >
                 <Link
                   to={`/servicos/${slugMap[service.title]}`}
@@ -128,7 +132,7 @@ export default function ServicesSection() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

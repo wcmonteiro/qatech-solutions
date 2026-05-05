@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { fadeUp, viewportConfig } from "@/lib/animations";
 import NewsletterSignup from "./NewsletterSignup";
 
 export default function Footer() {
@@ -6,12 +8,24 @@ export default function Footer() {
     <footer className="bg-slate-100 dark:bg-[#050810] border-t border-slate-200 dark:border-white/[0.04] pt-14 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Newsletter row */}
-        <div className="rounded-2xl border border-slate-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] p-6 md:p-8 mb-10">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
+          className="rounded-2xl border border-slate-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] p-6 md:p-8 mb-10"
+        >
           <NewsletterSignup />
-        </div>
+        </motion.div>
 
         {/* Bottom row */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
+          className="flex flex-col md:flex-row items-center justify-between gap-4"
+        >
           <div className="flex items-center">
             <img
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698e855b9e9a93cb4b5c4c52/550ce8d56_QA-logo-branca-transparente.png"
@@ -42,7 +56,7 @@ export default function Footer() {
               Site
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

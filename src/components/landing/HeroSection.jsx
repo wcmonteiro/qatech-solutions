@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { fadeUp, fadeLeft, staggerContainer, viewportConfig } from "@/lib/animations";
 
 export default function HeroSection() {
   return (
@@ -20,11 +21,14 @@ export default function HeroSection() {
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-20">
-        <div className="max-w-4xl">
+        <motion.div
+          className="max-w-4xl"
+          variants={staggerContainer(0.12, 0)}
+          initial="hidden"
+          animate="show"
+        >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={fadeUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 dark:bg-blue-500/5 mb-8"
           >
             <Sparkles className="w-4 h-4 text-blue-500 dark:text-blue-400" />
@@ -34,9 +38,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            variants={fadeUp}
             className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 dark:text-white leading-[0.95] tracking-tight mb-8"
           >
             Estratégia,{" "}
@@ -54,9 +56,7 @@ export default function HeroSection() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            variants={fadeUp}
             className="text-lg md:text-xl text-slate-500 dark:text-white/50 max-w-2xl leading-relaxed mb-12 font-light"
           >
             Transformamos organizações por meio da inovação tecnológica,
@@ -65,9 +65,7 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            variants={fadeUp}
             className="flex flex-col sm:flex-row gap-4"
           >
             <a href="#servicos">
@@ -89,12 +87,12 @@ export default function HeroSection() {
               </Button>
             </a>
           </motion.div>
-        </div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          variants={staggerContainer(0.1, 0)}
+          initial="hidden"
+          animate="show"
           className="mt-20 lg:mt-28 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
         >
           {[
@@ -103,14 +101,14 @@ export default function HeroSection() {
             { number: "2.4K", label: "Horas de Treinamento" },
             { number: "100%", label: "Foco em Resultados" },
           ].map((stat, i) => (
-            <div key={i} className="text-center md:text-left">
+            <motion.div key={i} variants={fadeUp} className="text-center md:text-left">
               <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-1">
                 {stat.number}
               </div>
               <div className="text-sm text-slate-400 dark:text-white/30 tracking-wide">
                 {stat.label}
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>

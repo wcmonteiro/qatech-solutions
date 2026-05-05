@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { base44 } from "@/api/base44Client";
+import { fadeUp, scaleIn, viewportConfig } from "@/lib/animations";
 
 const placeholders = [
   {
@@ -68,10 +69,10 @@ export default function TestimonialsSection() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
           className="text-center mb-16"
         >
           <span className="text-sm text-blue-500 dark:text-blue-400 tracking-[0.2em] uppercase font-medium">
@@ -85,7 +86,13 @@ export default function TestimonialsSection() {
         {loading ? (
           <div className="h-64 rounded-2xl border border-slate-200 dark:border-white/[0.06] bg-slate-50 dark:bg-white/[0.02] animate-pulse" />
         ) : (
-          <div className="relative">
+          <motion.div
+            variants={scaleIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+            className="relative"
+          >
             <AnimatePresence mode="wait">
               {active && (
                 <motion.div
@@ -149,7 +156,7 @@ export default function TestimonialsSection() {
                 </button>
               </div>
             )}
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

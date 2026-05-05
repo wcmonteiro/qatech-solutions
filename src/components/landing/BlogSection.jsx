@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 import { base44 } from "@/api/base44Client";
+import { fadeUp, scaleIn, staggerContainer, viewportConfig } from "@/lib/animations";
 
 const categoryColors = {
   "Governança Digital": "text-blue-500 dark:text-blue-400 bg-blue-500/10 border-blue-500/20",
@@ -51,10 +52,7 @@ function PostCard({ post, index }) {
   return (
     <Link to={post.slug ? `/blog/${post.slug}` : "#"} className="block">
       <motion.article
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+        variants={scaleIn}
         className="group flex flex-col rounded-2xl border border-slate-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] hover:border-blue-500/30 dark:hover:border-blue-500/20 hover:shadow-md dark:hover:shadow-none transition-all duration-500 overflow-hidden cursor-pointer"
       >
         <div className="relative h-48 overflow-hidden">
@@ -132,10 +130,10 @@ export default function BlogSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
         >
           <div>
@@ -174,11 +172,17 @@ export default function BlogSection() {
             ))}
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={staggerContainer(0.09, 0.05)}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportConfig}
+          >
             {filtered.map((post, i) => (
               <PostCard key={post.id} post={post} index={i} />
             ))}
-          </div>
+          </motion.div>
         )}
 
         {filtered.length === 0 && !loading && (
