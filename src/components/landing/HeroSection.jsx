@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { fadeUp, fadeLeft, staggerContainer, viewportConfig } from "@/lib/animations";
+import { fadeUp, staggerContainer, revealUp, revealFade } from "@/lib/animations";
 
 export default function HeroSection() {
   return (
@@ -38,7 +38,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.h1
-            variants={fadeUp}
+            variants={revealUp}
             className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 dark:text-white leading-[0.95] tracking-tight mb-8"
           >
             Estratégia,{" "}
@@ -56,7 +56,7 @@ export default function HeroSection() {
           </motion.h1>
 
           <motion.p
-            variants={fadeUp}
+            variants={revealFade}
             className="text-lg md:text-xl text-slate-500 dark:text-white/50 max-w-2xl leading-relaxed mb-12 font-light"
           >
             Transformamos organizações por meio da inovação tecnológica,
