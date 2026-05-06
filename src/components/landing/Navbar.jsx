@@ -39,14 +39,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
         <a href="#" className="flex items-center">
           <img
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698e855b9e9a93cb4b5c4c52/550ce8d56_QA-logo-branca-transparente.png"
+            src="https://media.base44.com/images/public/698e855b9e9a93cb4b5c4c52/274fe24f3_QA-logo-branca-transparente.png"
             alt="QA Tecnologia"
-            className="h-10 w-auto dark:block hidden"
+            className="h-16 w-auto dark:block hidden"
           />
           <img
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698e855b9e9a93cb4b5c4c52/550ce8d56_QA-logo-branca-transparente.png"
+            src="https://media.base44.com/images/public/698e855b9e9a93cb4b5c4c52/274fe24f3_QA-logo-branca-transparente.png"
             alt="QA Tecnologia"
-            className="h-10 w-auto dark:hidden block brightness-0"
+            className="h-16 w-auto dark:hidden block brightness-0"
           />
         </a>
 
