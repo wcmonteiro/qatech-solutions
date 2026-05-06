@@ -27,16 +27,6 @@ export default function HeroSection() {
           initial="hidden"
           animate="show"
         >
-          <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 dark:bg-blue-500/5 mb-8"
-          >
-            <Sparkles className="w-4 h-4 text-blue-500 dark:text-blue-400" />
-            <span className="text-sm text-blue-600 dark:text-blue-300 tracking-wide font-medium">
-              Inovar com resultados
-            </span>
-          </motion.div>
-
           <motion.h1
             variants={revealUp}
             className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 dark:text-white leading-[0.95] tracking-tight mb-8"
