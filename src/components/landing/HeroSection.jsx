@@ -29,7 +29,7 @@ export default function HeroSection() {
         >
           <motion.h1
             variants={revealUp}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 dark:text-white leading-[0.95] tracking-tight mb-8"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-[0.95] tracking-tight mb-8"
           >
             Estratégia,{" "}
             <span className="relative">
