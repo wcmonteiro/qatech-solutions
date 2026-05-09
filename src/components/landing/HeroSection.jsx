@@ -20,7 +20,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-20">
         <motion.div
           className="max-w-4xl"
           variants={staggerContainer(0.12, 0)}
@@ -29,16 +29,17 @@ export default function HeroSection() {
         >
           <motion.h1
             variants={revealUp}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-[0.95] tracking-tight mb-8"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight mb-8"
           >
-            Estratégia,{" "}
-            <span className="relative">
-              <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-500 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
-                Governança
-              </span>
+            <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-500 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
+              Estratégia Digital,
             </span>
             <br />
-            <span className="text-slate-400 dark:text-white/40">&</span>{" "}
+            <span className="bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+              Governança de TI
+            </span>
+            <br />
+            <span className="text-slate-400 dark:text-white/40">e </span>
             Inteligência{" "}
             <span className="bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
               Artificial
