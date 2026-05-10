@@ -61,7 +61,7 @@ export default function TestimonialsSection() {
   const active = items[current];
 
   return (
-    <section id="depoimentos" className="relative py-28 md:py-36 bg-white dark:bg-[#070B14]">
+    <section id="depoimentos" className="relative py-16 md:py-24 bg-white dark:bg-[#070B14]">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-white/[0.06] to-transparent" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-indigo-500/[0.04] rounded-full blur-[120px]" />

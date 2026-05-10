@@ -18,7 +18,7 @@ const checkpoints = [
 
 export default function AboutSection() {
   return (
-    <section id="sobre" className="relative py-28 md:py-36 bg-white dark:bg-[#070B14]">
+    <section id="sobre" className="relative py-16 md:py-24 bg-white dark:bg-[#070B14]">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px]" />
       </div>

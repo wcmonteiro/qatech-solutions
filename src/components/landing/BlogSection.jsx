@@ -124,7 +124,7 @@ export default function BlogSection() {
     : posts.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="blog" className="relative py-28 md:py-36 bg-slate-50 dark:bg-[#070B14]">
+    <section id="blog" className="relative py-16 md:py-24 bg-slate-50 dark:bg-[#070B14]">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-white/[0.06] to-transparent" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/[0.03] rounded-full blur-[100px]" />
 

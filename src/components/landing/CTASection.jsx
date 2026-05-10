@@ -42,7 +42,7 @@ export default function CTASection() {
     }`;
 
   return (
-    <section id="contato" className="relative py-28 md:py-36 bg-white dark:bg-[#070B14] overflow-hidden">
+    <section id="contato" className="relative py-16 md:py-24 bg-white dark:bg-[#070B14] overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/[0.04] rounded-full blur-[150px]" />
       </div>

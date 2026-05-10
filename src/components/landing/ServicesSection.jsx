@@ -57,7 +57,7 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="servicos" className="relative py-28 md:py-36 bg-slate-50 dark:bg-[#0A0F1C]">
+    <section id="servicos" className="relative py-16 md:py-24 bg-slate-50 dark:bg-[#0A0F1C]">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/5 rounded-full blur-[150px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -66,7 +66,7 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="show"
           viewport={viewportConfig}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
           <span className="text-sm text-blue-500 dark:text-blue-400 tracking-[0.2em] uppercase font-medium">
             Como podemos ajudar
