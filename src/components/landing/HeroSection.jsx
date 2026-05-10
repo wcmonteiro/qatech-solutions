@@ -31,10 +31,10 @@ export default function HeroSection() {
             variants={revealUp}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-8 space-y-2"
           >
-            <span className="block pb-1 bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-500 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
+            <span className="block pb-3 bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-500 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
               Estratégia Digital,
             </span>
-            <span className="block pb-1 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+            <span className="block pb-3 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
               Governança de TI
             </span>
             <span className="block pb-3">
