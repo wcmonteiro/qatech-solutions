@@ -29,7 +29,7 @@ export default function HeroSection() {
         >
           <motion.h1
             variants={revealUp}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight mb-8"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-[1.2] tracking-tight mb-8"
           >
             <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-500 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
               Estratégia Digital,
