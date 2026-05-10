@@ -29,20 +29,20 @@ export default function HeroSection() {
         >
           <motion.h1
             variants={revealUp}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-[1.2] tracking-tight mb-8"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-8 space-y-2"
           >
-            <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-500 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
+            <span className="block pb-1 bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-500 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400 bg-clip-text text-transparent">
               Estratégia Digital,
             </span>
-            <br />
-            <span className="bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+            <span className="block pb-1 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
               Governança de TI
             </span>
-            <br />
-            <span className="text-slate-400 dark:text-white/40">e </span>
-            Inteligência{" "}
-            <span className="bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-              Artificial
+            <span className="block pb-1">
+              <span className="text-slate-400 dark:text-white/40">e </span>
+              Inteligência{" "}
+              <span className="bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+                Artificial
+              </span>
             </span>
           </motion.h1>
 
