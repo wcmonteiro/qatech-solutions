@@ -37,7 +37,7 @@ export default function HeroSection() {
             <span className="block pb-1 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
               Governança de TI
             </span>
-            <span className="block pb-1">
+            <span className="block pb-3">
               <span className="text-slate-400 dark:text-white/40">e </span>
               Inteligência{" "}
               <span className="bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
