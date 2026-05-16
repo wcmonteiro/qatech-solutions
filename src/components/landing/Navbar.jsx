@@ -12,9 +12,9 @@ const navLinks = [
   { 
     label: "Produtos Digitais", 
     submenu: [
-      { label: "CuboPlace", href: "/produtos/cuboplace", isRoute: true },
-      { label: "ExecutiveBoard", href: "/produtos/executiveboard", isRoute: true },
-      { label: "MindPrime", href: "/produtos/mindprime", isRoute: true }
+      { label: "CuboPlace", href: "https://www.cuboplace.com" },
+      { label: "ExecutiveBoard", href: "https://www.executiveboard.com.br" },
+      { label: "MindPrime", href: "https://www.mindprime.com.br" }
     ]
   },
   { label: "Contato", href: "/contato", isRoute: true },
@@ -70,13 +70,15 @@ export default function Navbar() {
                   </button>
                   <div className="absolute left-0 mt-0 w-48 bg-white dark:bg-[#1A1F2E] rounded-lg shadow-lg border border-slate-200 dark:border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2 z-50">
                     {link.submenu.map((sublink) => (
-                      <Link
+                      <a
                         key={sublink.label}
-                        to={sublink.href}
+                        href={sublink.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block px-4 py-2 text-sm text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
                       >
                         {sublink.label}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -153,14 +155,16 @@ export default function Navbar() {
                     {openSubmenu === link.label && (
                       <div className="ml-4 mt-2 space-y-2 border-l border-slate-200 dark:border-white/10 pl-4">
                         {link.submenu.map((sublink) => (
-                          <Link
+                          <a
                             key={sublink.label}
-                            to={sublink.href}
+                            href={sublink.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onClick={() => setMobileOpen(false)}
                             className="block text-sm text-slate-500 dark:text-white/50 hover:text-slate-900 dark:hover:text-white transition-colors"
                           >
                             {sublink.label}
-                          </Link>
+                          </a>
                         ))}
                       </div>
                     )}
