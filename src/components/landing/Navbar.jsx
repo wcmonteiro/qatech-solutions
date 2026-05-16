@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const navLinks = [
@@ -9,12 +9,21 @@ const navLinks = [
   { label: "Cases", href: "/cases", isRoute: true },
   { label: "Blog", href: "/#blog" },
   { label: "Sobre", href: "/#sobre" },
+  { 
+    label: "Produtos Digitais", 
+    submenu: [
+      { label: "CuboPlace", href: "/produtos/cuboplace", isRoute: true },
+      { label: "ExecutiveBoard", href: "/produtos/executiveboard", isRoute: true },
+      { label: "MindPrime", href: "/produtos/mindprime", isRoute: true }
+    ]
+  },
   { label: "Contato", href: "/contato", isRoute: true },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -51,8 +60,30 @@ export default function Navbar() {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) =>
-            link.isRoute ? (
+          {navLinks.map((link) => {
+            if (link.submenu) {
+              return (
+                <div key={link.label} className="relative group">
+                  <button className="text-sm text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 font-light flex items-center gap-1">
+                    {link.label}
+                    <ChevronDown className="w-3 h-3" />
+                  </button>
+                  <div className="absolute left-0 mt-0 w-48 bg-white dark:bg-[#1A1F2E] rounded-lg shadow-lg border border-slate-200 dark:border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2 z-50">
+                    {link.submenu.map((sublink) => (
+                      <Link
+                        key={sublink.label}
+                        to={sublink.href}
+                        className="block px-4 py-2 text-sm text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                      >
+                        {sublink.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            
+            return link.isRoute ? (
               <Link
                 key={link.label}
                 to={link.href}
@@ -68,8 +99,8 @@ export default function Navbar() {
               >
                 {link.label}
               </a>
-            )
-          )}
+            );
+          })}
 
           {mounted && (
             <button
@@ -108,8 +139,36 @@ export default function Navbar() {
           className="md:hidden bg-white/95 dark:bg-[#0A0F1C]/95 backdrop-blur-xl border-t border-slate-200 dark:border-white/[0.04]"
         >
           <div className="px-6 py-6 space-y-4">
-            {navLinks.map((link) =>
-              link.isRoute ? (
+            {navLinks.map((link) => {
+              if (link.submenu) {
+                return (
+                  <div key={link.label}>
+                    <button
+                      onClick={() => setOpenSubmenu(openSubmenu === link.label ? null : link.label)}
+                      className="block w-full text-left text-slate-500 dark:text-white/50 hover:text-slate-900 dark:hover:text-white transition-colors text-base font-light flex items-center justify-between"
+                    >
+                      {link.label}
+                      <ChevronDown className={`w-4 h-4 transition-transform ${openSubmenu === link.label ? 'rotate-180' : ''}`} />
+                    </button>
+                    {openSubmenu === link.label && (
+                      <div className="ml-4 mt-2 space-y-2 border-l border-slate-200 dark:border-white/10 pl-4">
+                        {link.submenu.map((sublink) => (
+                          <Link
+                            key={sublink.label}
+                            to={sublink.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="block text-sm text-slate-500 dark:text-white/50 hover:text-slate-900 dark:hover:text-white transition-colors"
+                          >
+                            {sublink.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return link.isRoute ? (
                 <Link
                   key={link.label}
                   to={link.href}
@@ -127,8 +186,8 @@ export default function Navbar() {
                 >
                   {link.label}
                 </a>
-              )
-            )}
+              );
+            })}
 
           </div>
         </motion.div>

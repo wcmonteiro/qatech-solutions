@@ -12,6 +12,9 @@ import ContactPage from './pages/ContactPage';
 import AdminPage from './pages/AdminPage';
 import CasesPage from './pages/CasesPage';
 import DownloadPage from './pages/DownloadPage';
+import CuboPlace from './pages/produtos/CuboPlace';
+import ExecutiveBoard from './pages/produtos/ExecutiveBoard';
+import MindPrime from './pages/produtos/MindPrime';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -71,6 +74,9 @@ const AuthenticatedApp = () => {
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/cases" element={<CasesPage />} />
       <Route path="/download" element={<DownloadPage />} />
+      <Route path="/produtos/cuboplace" element={<CuboPlace />} />
+      <Route path="/produtos/executiveboard" element={<ExecutiveBoard />} />
+      <Route path="/produtos/mindprime" element={<MindPrime />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
