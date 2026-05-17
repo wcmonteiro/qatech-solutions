@@ -16,30 +16,30 @@ const categoryColors = {
 const placeholderPosts = [
   {
     id: "1",
-    title: "Governança Digital: como estruturar uma estratégia eficaz para 2025",
-    excerpt: "Descubra os pilares fundamentais para implementar uma governança digital sólida que alinhe TI aos objetivos estratégicos do negócio.",
+    title: "Governança Digital: como estruturar uma estratégia eficaz para 2026",
+    excerpt: "Descubra os pilares fundamentais para implementar uma governança digital sólida que alinhe TI aos objetivos estratégicos do negócio, com as principais tendências e desafios do cenário corporativo atual.",
     category: "Governança Digital",
     author: "Equipe QA",
     read_time: 5,
-    created_date: "2025-03-10"
+    created_date: "2026-03-10"
   },
   {
     id: "2",
-    title: "IA nas organizações: oportunidades reais além do hype",
-    excerpt: "Como identificar casos de uso de Inteligência Artificial com ROI comprovado e implementá-los de forma sustentável na sua empresa.",
+    title: "IA nas organizações em 2026: oportunidades reais além do hype",
+    excerpt: "Como identificar casos de uso de Inteligência Artificial com ROI comprovado e implementá-los de forma sustentável na sua empresa, evitando armadilhas comuns e maximizando resultados concretos.",
     category: "Inteligência Artificial",
     author: "Equipe QA",
     read_time: 7,
-    created_date: "2025-02-22"
+    created_date: "2026-02-22"
   },
   {
     id: "3",
-    title: "Digital Business Assurance: garantindo qualidade na era digital",
-    excerpt: "Entenda como a abordagem de DBA reduz riscos, aumenta a agilidade e garante melhores experiências para clientes digitais.",
+    title: "Digital Business Assurance: garantindo qualidade na era digital em 2026",
+    excerpt: "Entenda como a abordagem de DBA reduz riscos, aumenta a agilidade e garante melhores experiências para clientes digitais, consolidando a excelência operacional como diferencial competitivo.",
     category: "Digital Business",
     author: "Equipe QA",
     read_time: 4,
-    created_date: "2025-02-05"
+    created_date: "2026-02-05"
   }
 ];
 
@@ -173,11 +173,11 @@ export default function BlogSection() {
           </div>
         ) : (
           <motion.div
+            key={activeCategory}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={staggerContainer(0.09, 0.05)}
             initial="hidden"
-            whileInView="show"
-            viewport={viewportConfig}
+            animate="show"
           >
             {filtered.map((post, i) => (
               <PostCard key={post.id} post={post} index={i} />
