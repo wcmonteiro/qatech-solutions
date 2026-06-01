@@ -6,14 +6,21 @@ import { Button } from "@/components/ui/button";
 import { base44 } from "@/api/base44Client";
 
 
-const services = [
-  "Consultoria Estratégica",
-  "Governança Digital",
-  "Inteligência Artificial",
-  "Digital Business Assurance",
-  "Aquisição de Software",
-  "Auditoria de Contratos de TI",
-  "Outro"
+const options = [
+  { group: "Serviços", items: [
+    "Consultoria Estratégica",
+    "Governança Digital",
+    "Inteligência Artificial",
+    "Digital Business Assurance",
+    "Aquisição de Software",
+    "Auditoria de Contratos de TI",
+  ]},
+  { group: "Produtos", items: [
+    "CuboPlace",
+    "ExecutiveBoard",
+    "MindPrime",
+  ]},
+  { group: "Outro", items: ["Outro"] },
 ];
 
 export default function CTASection() {
@@ -165,7 +172,13 @@ export default function CTASection() {
                     }`}
                   >
                     <option value="">Selecione...</option>
-                    {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                    {options.map((group) =>
+                      group.group === "Outro"
+                        ? <option key="Outro" value="Outro">Outro</option>
+                        : <optgroup key={group.group} label={group.group}>
+                            {group.items.map((s) => <option key={s} value={s}>{s}</option>)}
+                          </optgroup>
+                    )}
                   </select>
                   {errors.service && <p className="text-red-500 text-xs mt-1.5">{errors.service.message}</p>}
                 </div>
