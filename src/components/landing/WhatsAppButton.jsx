@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, MessageCircle } from "lucide-react";
 
 // Configurar o número no formato internacional sem símbolos: ex. 5531999999999
-const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "5531999999999";
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "553130582717";
 const WHATSAPP_MESSAGE = import.meta.env.VITE_WHATSAPP_MESSAGE || "Olá! Gostaria de mais informações sobre os serviços da QA Tecnologia.";
 
 const trackEvent = (name, params = {}) => {
