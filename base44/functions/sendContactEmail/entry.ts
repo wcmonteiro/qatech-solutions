@@ -8,21 +8,25 @@ Deno.serve(async (req) => {
 
     const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
-    // Salva o lead no banco como garantia
-    await base44.asServiceRole.entities.Lead.create({
-      name,
-      email,
-      interest: service,
-      source: "landing_page"
-    });
-
-    // Envia e-mail de notificação para a QA Tecnologia
+    // Envia o e-mail PRIMEIRO (prioridade máxima)
     await resend.emails.send({
       from: "Site QA Tecnologia <onboarding@resend.dev>",
       to: ["contato@qatecnologia.com.br"],
       subject: `[CONTATO] Nova solicitação de ${name} - ${service}`,
       text: `Nova solicitação de contato recebida pelo site:\n\n👤 Nome: ${name}\n📧 E-mail: ${email}\n🏢 Empresa: ${company || "Não informado"}\n🎯 Interesse: ${service}\n\n💬 Mensagem:\n${message}\n\n---\nEnviado automaticamente pelo site qatecnologia.com.br`,
     });
+
+    // Salva o lead no banco como backup (sem bloquear em caso de erro)
+    try {
+      await base44.asServiceRole.entities.Lead.create({
+        name,
+        email,
+        interest: "Outro",
+        source: service,
+      });
+    } catch (_) {
+      // Não bloqueia mesmo se falhar
+    }
 
     return Response.json({ success: true });
   } catch (error) {
