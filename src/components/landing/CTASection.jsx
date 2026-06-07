@@ -31,13 +31,13 @@ export default function CTASection() {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    try {
-      await base44.integrations.Core.SendEmail({
-        to: "contato@qatecnologia.com.br",
-        subject: `Solicitação de Orçamento - ${data.service}`,
-        body: `Nome: ${data.name}\nEmail: ${data.email}\nEmpresa: ${data.company}\nServiço: ${data.service}\n\nMensagem:\n${data.message}`
-      });
-    } catch {}
+    await base44.functions.invoke("sendContactEmail", {
+      name: data.name,
+      email: data.email,
+      company: data.company,
+      service: data.service,
+      message: data.message,
+    });
     setSubmitted(true);
     setLoading(false);
     reset();
