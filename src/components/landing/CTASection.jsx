@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { ArrowRight, Mail, MapPin, Linkedin, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { base44 } from "@/api/base44Client";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_SERVICE_ID = "service_t5bgomi";
+const EMAILJS_TEMPLATE_ID = "form_qa_contato";
+const EMAILJS_PUBLIC_KEY = "kuAXYOY543gwbRhyA";
 
 
 const options = [
@@ -31,13 +35,18 @@ export default function CTASection() {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    await base44.functions.invoke("sendContactEmail", {
-      name: data.name,
-      email: data.email,
-      company: data.company,
-      service: data.service,
-      message: data.message,
-    });
+    await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      {
+        from_name: data.name,
+        from_email: data.email,
+        company: data.company || "Não informado",
+        service: data.service,
+        message: data.message,
+      },
+      EMAILJS_PUBLIC_KEY
+    );
     setSubmitted(true);
     setLoading(false);
     reset();
