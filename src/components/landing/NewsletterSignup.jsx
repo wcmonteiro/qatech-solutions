@@ -21,11 +21,6 @@ export default function NewsletterSignup() {
       const existing = await base44.entities.NewsletterSubscriber.filter({ email });
       if (existing.length === 0) {
         await base44.entities.NewsletterSubscriber.create({ email, source: "landing_page", active: true });
-        await base44.integrations.Core.SendEmail({
-          to: email,
-          subject: "Bem-vindo(a) à newsletter da QA Tecnologia!",
-          body: `Olá!\n\nVocê está inscrito(a) na newsletter da QA Tecnologia.\n\nVocê receberá conteúdos exclusivos sobre Governança Digital, Inteligência Artificial e Estratégia de TI.\n\nAtenciosamente,\nEquipe QA Tecnologia`
-        });
       }
       setStatus("success");
       setEmail("");
